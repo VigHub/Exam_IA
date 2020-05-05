@@ -2,12 +2,25 @@ from multi_armed_bandit import MultiArmedBandit
 import numpy as np
 
 
-def get_thompson_choice(success_count_arm, failure_count_arm):
+def get_thompson_choice(success_count_arm: np.ndarray, failure_count_arm: np.ndarray):
+    """Scelta dell'agente di Thompson
+
+    :param success_count_arm: numero di reward ottenuti per ogni braccio
+    :param failure_count_arm: numero di volte in cui ogni braccio non ha dato nulla
+    :return: leva da abbassare
+    """
     beta_arr = np.random.beta(success_count_arm, failure_count_arm)
     return np.argmax(beta_arr)
 
 
-def play(reward_prob_list, rounds, steps):
+def play(reward_prob_list: list, rounds: int, steps: int):
+    """Aziona l'agente di Thompson
+
+    :param reward_prob_list: insieme di braccia con probabilità per crare MultiArmedBandit
+    :param rounds: numero di volte in cui viene ripetuto l'esperimento
+    :param steps: numero di turni (scelte) da fare in ogni round
+    :return: reward medio ottenuto per round
+    """
     bandit = MultiArmedBandit(reward_prob_list)
     arms = len(bandit.reward_prob_list)
     tot_reward_list = []
@@ -23,7 +36,7 @@ def play(reward_prob_list, rounds, steps):
             reward = bandit.step(choice)
             if reward == 1:
                 success_count_arm[choice] += 1
-            else: # reward == 0
+            else:  # reward == 0
                 failure_count_arm[choice] += 1
             counter_arm[choice] += 1
             tot_reward += reward

@@ -4,17 +4,30 @@ import random as rnd
 
 
 def get_epsilon_greedy_choice(epsilon, reward_counter_array):
+    """Scelta dell'agente epsilon-greedy
+
+    :param epsilon: probabilità con cui l'agente effettua exploration anzichè exploitation
+    :param reward_counter_array: insieme di leve da cui effettuare la scelta
+    :return: leva da abbassare
+    """
     possible_choice = len(reward_counter_array)
-    if rnd.uniform(0, 1) <= epsilon:
+    if rnd.uniform(0, 1) <= epsilon:  # exploration
         choice = np.random.randint(0, possible_choice)
-    else:
+    else:  # exploitation
         max_arm = np.amax(reward_counter_array)
         indices = np.where(reward_counter_array == max_arm)[0]
         choice = np.random.choice(indices)
     return choice
 
 
-def play(reward_prob_list, rounds, steps):
+def play(reward_prob_list: list, rounds: int, steps: int):
+    """Aziona l'agente epsilon-greedy
+
+    :param reward_prob_list: insieme di braccia con probabilità per crare MultiArmedBandit
+    :param rounds: numero di volte in cui viene ripetuto l'esperimento
+    :param steps: numero di turni (scelte) da fare in ogni round
+    :return: reward medio ottenuto per round
+    """
     bandit = MultiArmedBandit(reward_prob_list)
     espilon = 0.1
     arms = len(bandit.reward_prob_list)

@@ -3,10 +3,22 @@ import numpy as np
 
 
 def get_random_choice(possible_choices):
+    """Scelta dell'agente casuale.
+
+    :param possible_choices: insieme di leve da cui effettuare la scelta
+    :return: leva da abbassare
+    """
     return np.random.randint(0, possible_choices)
 
 
-def play(reward_prob_list, rounds, steps):
+def play(reward_prob_list: list, rounds: int, steps: int):
+    """Aziona l'agente casuale
+
+    :param reward_prob_list: insieme di braccia con probabilità per crare MultiArmedBandit
+    :param rounds: numero di volte in cui viene ripetuto l'esperimento
+    :param steps: numero di turni (scelte) da fare in ogni round
+    :return: reward medio ottenuto per round
+    """
     bandit = MultiArmedBandit(reward_prob_list)
     arms = len(bandit.reward_prob_list)
     reward_list = []

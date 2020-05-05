@@ -8,13 +8,13 @@ if __name__ == '__main__':
     rounds = 100
     steps = 1000
     lines = "\n----------------------------\n"
-    rnd = randon_agent.play(reward_prob_list, rounds, steps)
+    rnd = randon_agent.play(reward_prob_list, rounds, steps)  # agente casuale
     print(lines)
-    eg = epsilon_greedy_agent.play(reward_prob_list, rounds, steps)
+    eg = epsilon_greedy_agent.play(reward_prob_list, rounds, steps)  # agente epsilon-greedy
     print(lines)
-    th = thompson_agent.play(reward_prob_list, rounds, steps)
+    th = thompson_agent.play(reward_prob_list, rounds, steps)  # agente di thompson
     print(lines)
-    best_theorical= max(reward_prob_list) * steps
+    best_theorical = max(reward_prob_list) * steps  # massimo ottenibile sapendo a priori le probabilità
 
     agents = ["Thompson", "Random", "Epsilon-Greedy", "Onniscente"]
     plt.bar(agents, [th, rnd, eg, best_theorical])
