@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -14,7 +13,7 @@ df = load.df
 K = 3
 T = 25000
 M = 3
-iterations = 10
+iterations = 50
 gamma = 1
 K_set = np.round(np.logspace(math.log(2, 10), math.log(15, 10), endpoint=True, num=10)).astype(int)
 T_set = np.round(np.logspace(math.log(500, 10), math.log(T, 10), endpoint=True, num=8)).astype(int)
@@ -106,8 +105,6 @@ if t1:
     reg_ucb1_T = np.zeros((iterations, p))
     print('Start on T')
     for i in settings.progress_bar(range(0, iterations)):
-        # for i in range(0, iterations):
-        # print(i)
         df = df.sample(frac=1)
         mu = df.groupby('asin')['reward'].mean().sort_values(ascending=False)[1:K + 1]
         arms = mu.keys().to_numpy()
@@ -144,12 +141,10 @@ if c1:
     reg_ucb1 = np.zeros(iterations)
     print('Start on comparison with [PRCS16]')
     for i in settings.progress_bar(range(0, iterations)):
-        # for i in range(0, iterations):
-        # print(i)
         df = df.sample(frac=1)
         mu = df.groupby('asin')['reward'].mean().sort_values(ascending=False)[1:3]  # [1:3]
         arms = mu.keys().to_numpy()
-        reg_ucb1[i] = ucb1(arms, mu, 2, T) / T
+        reg_ucb1[i] = ucb1(arms, mu, 2, T)
         for m in range(0, p):
             m_now = M_set[m]
             reg_minimax[i, m] = BASEFunc(arms, mu, 2, T, m_now, 'minimax', gamma)[0]
