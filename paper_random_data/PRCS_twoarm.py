@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 
-def PRCS_twoarm(mu: list[float], M: int, T: int, grid_type: str) -> float:
+def PRCS_twoarm(mu, M: int, T: int, grid_type: str) -> float:
     """Implementazione algoritmo ETC con dati casuali
 
        :param arms: lista degli 'asin' per ogni braccio

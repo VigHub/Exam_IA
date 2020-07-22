@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 
-def BASEFunc(mu: list[float], K: int, T: int, M: int, grid_type: str, gamma: float) -> [float, np.ndarray]:
+def BASEFunc(mu, K: int, T: int, M: int, grid_type: str, gamma: float) -> [float, np.ndarray]:
     """Implementazione algoritmo BaSE con dati casuali
 
         :param mu: vettore delle medie per ogni braccio

@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def ucb1(mu: list[float], K: int, T: int) -> float:
+def ucb1(mu, K: int, T: int) -> float:
     """Implementazione algoritmo UCB1 con dati casuali
 
     :param mu: vettore delle medie per ogni braccio
