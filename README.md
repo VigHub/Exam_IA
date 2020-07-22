@@ -10,7 +10,8 @@ Eseguire il file [main_agents.py](agents_simple_case/main_agents.py).
 riproposte le stesse funzioni dello studio con dati casuali riscritte in Python.
 Eseguire il file [main_random.py](paper_random_data/main_random.py).
 + **paper_real_data**: codice relativo al capitolo 4 (Esperimenti), dove sono 
-presenti le funzioni dello studio con dati reali letti da un database.
+presenti le funzioni dello studio con dati reali letti da un database (file [famous.csv](paper_real_data/famous.csv), estrapolato da
+[http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/all_csv_files.csv](http://deepyeti.ucsd.edu/jianmo/amazon/categoryFilesSmall/all_csv_files.csv)).
 Eseguire il file [main_real.py](paper_real_data/main_real.py).
 
 Per maggiori dettagli e per leggere tutte le considerazioni si rimanda 
